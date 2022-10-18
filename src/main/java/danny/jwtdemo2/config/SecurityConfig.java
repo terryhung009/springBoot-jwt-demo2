@@ -60,7 +60,8 @@ public class SecurityConfig {
     }
     @Bean
     JwtEncoder jwtEncoder(){
-        JWK jwk = new RSAKey.Builder(rsaKeys.publicKey()).privateKey(rsaKeys.privateKey()).build();
+        JWK jwk = new RSAKey.Builder(rsaKeys.publicKey())
+                .privateKey(rsaKeys.privateKey()).build();
 
         JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet());
         return new NimbusJwtEncoder(jwks);
